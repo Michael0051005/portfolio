@@ -576,7 +576,6 @@ nav a:hover, .team-link:hover, .foot a:hover { color: var(--accent); text-decora
   .recognition-source img { width: 100%; margin-bottom: 5px; }
   .recognition-source.recognition-certificate { justify-self: end; text-align: center; }
   .recognition-source.recognition-certificate img { width: 56px; margin-inline: auto; }
-  .recognition-source.recognition-certificate > span { font-size: .7rem; white-space: nowrap; }
   .feature { border-radius: 16px; }
   .project-cover { min-height: 0; }
   .shift, .robotics { gap: 9px; }
