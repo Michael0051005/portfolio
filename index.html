@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="description" content="東京RPG、Astera、矢上祭シフト管理アプリ、屋外自己位置推定の実機検証を紹介します。">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body id="top">
+  <a class="skip" href="#main">本文へ移動</a>
+  <header class="masthead">
+    <div class="wrap masthead-inner">
+      <a class="team-link" href="https://alcedo-team.github.io/HP/">Alcedo チームサイト <span aria-hidden="true">↗</span></a>
+      <nav aria-label="ページ内ナビゲーション">
+        <a href="#recognitions">受賞・選出</a>
+        <a href="#works">作品</a>
+        <a href="#robotics">実機検証</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="hero" aria-labelledby="intro-title">
+      <div class="hero-copy">
+        <h1 id="intro-title" lang="en">Portfolio</h1>
+        <p class="hero-summary">東京RPGとAsteraを中心に、アプリ制作とロボットの実機検証をまとめました。</p>
+        <a class="hero-link" href="#works">作品を見る <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-showcase">
+        <div id="hero-stage" class="hero-stage" data-active="tokyo" aria-hidden="true">
+          <div class="stage-scene stage-tokyo" data-scene="tokyo">
+            <img class="stage-phone stage-phone-left" src="assets/tokyo-card.jpg" alt="" width="392" height="850">
+            <img class="stage-phone stage-phone-right" src="assets/tokyo-map.jpg" alt="" width="392" height="850" fetchpriority="high">
+          </div>
+          <div class="stage-scene stage-astera" data-scene="astera">
+            <img class="stage-phone stage-phone-left" src="assets/astera-map.jpg" alt="" width="423" height="920">
+            <img class="stage-phone stage-phone-right" src="assets/astera-detail.jpg" alt="" width="423" height="920">
+          </div>
+        </div>
+        <div class="project-switch" role="group" aria-label="メイン画像の切り替え" hidden data-project-switch>
+          <button type="button" aria-pressed="true" data-project="tokyo">東京RPG</button>
+          <button type="button" aria-pressed="false" data-project="astera">Astera</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="recognitions" class="recognitions" aria-labelledby="recognitions-title">
+      <div class="section-heading"><h2 id="recognitions-title">受賞・選出</h2></div>
+      <div class="featured-grid recognition-grid">
+        <article class="recognition recognition-with-image">
+          <div>
+            <h3 class="recognition-project"><a href="#tokyo-rpg">東京RPG</a></h3>
+            <p class="recognition-event">都知事杯オープンデータ・ハッカソン2026</p>
+            <p class="recognition-result">ファイナリスト</p>
+            <p class="recognition-detail">応募<strong>486件</strong>のうち<strong>24件</strong>が進出<span class="recognition-team">（KEIO SCI-TECH）</span></p>
+          </div>
+          <a class="recognition-source" href="https://www.metro.tokyo.lg.jp/information/press/2026/10/2026102010">
+            <img src="assets/tokyo-final-stage.jpg" alt="Final Stageの集合写真" width="600" height="237">
+            <span>東京都の報道発表 <span aria-hidden="true">↗</span></span>
+          </a>
+        </article>
+        <article class="recognition">
+          <h3 class="recognition-project" lang="en"><a href="#astera">Astera</a></h3>
+          <p class="recognition-event"><a href="https://jphacks.com/2026/detail/">JPHACKS 2026 <span aria-hidden="true">↗</span></a></p>
+          <p class="recognition-result"><span lang="en">Hack Day Audience Award</span> 受賞</p>
+          <p class="recognition-detail">Hack Day 東京会場B</p>
+        </article>
+        <article class="recognition recognition-pending">
+          <h3 class="recognition-project"><a href="#tokyo-rpg">東京RPG</a></h3>
+          <p class="recognition-event"><a href="https://gakumado.mynavi.jp/contents/m/articles/gmd/td_try_and_discover_now_award/">わたしたちの <span lang="en">TRY &amp; DISCOVER NOW! AWARD</span> <span aria-hidden="true">↗</span></a></p>
+          <p class="recognition-result">最終選考進出<span class="recognition-status">（審査中）</span></p>
+          <p class="recognition-detail">T&amp;D保険グループ主催 · 二次選考通過<span class="recognition-team">（KEIO SCI-TECH）</span></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="works" aria-labelledby="works-title">
+      <div class="section-heading"><h2 id="works-title">作品</h2></div>
+
+      <div class="featured-grid">
+        <article class="feature" id="tokyo-rpg" aria-labelledby="tokyo-title">
+          <figure class="visual">
+            <div class="project-cover phone-pair cover-tokyo">
+              <img src="assets/tokyo-map.jpg" alt="地図上に現在地と訪問クエストを表示した東京RPGの画面" width="392" height="850" loading="lazy">
+              <img src="assets/tokyo-card.jpg" alt="獲得した称号と訪問記録を表示した冒険者カード" width="392" height="850">
+            </div>
+            <figcaption>都知事杯オープンデータ・ハッカソン 2026 提出作品集より</figcaption>
+          </figure>
+          <div class="feature-copy">
+            <h3 id="tokyo-title">東京RPG</h3>
+            <div class="description">
+              <p>東京を訪れる外国人旅行者向けの観光アプリです。東京都のオープンデータから場所と時間帯ごとの混み具合を推定し、空いている場所を訪ねるとゲーム内で多くの経験値がもらえるようにしました。</p>
+              <p>行きたい場所、移動時間、混み具合をもとにルートを提案します。雨が降ったら、屋内の候補を入れて組み直せます。</p>
+            </div>
+            <dl class="technology">
+              <div><dt>地図</dt><dd>Leaflet、OpenStreetMap</dd></div>
+              <div><dt>配信・データベース</dt><dd>Cloudflare Workers、D1</dd></div>
+              <div><dt>天気・生成AI</dt><dd>Open-Meteo、Cloudflare Workers AI（物語生成・翻訳）</dd></div>
+            </dl>
+            <div class="actions">
+              <a class="action primary" href="https://tokyo-rpg.keio-sci-tech.workers.dev">アプリを開く <span aria-hidden="true">↗</span></a>
+              <a class="action" href="https://odhackathon.metro.tokyo.lg.jp/collection/6632592270313775458/?year=2026">公式作品ページ <span aria-hidden="true">↗</span></a>
+              <a class="action" href="https://www.youtube.com/watch?v=ABHPUTt3NCA&amp;t=8746s">Final Stageの発表動画 <span aria-hidden="true">↗</span></a>
+              <a class="action" href="materials/tokyo-rpg-final-stage.pdf" target="_blank" rel="noopener">発表資料（PDF） <span aria-hidden="true">↗</span></a>
+              <a class="action" href="materials/tokyo-rpg-final-stage.pptx" download="東京RPG_FinalStage_発表資料.pptx">PowerPointを保存 <span aria-hidden="true">↓</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="feature" id="astera" aria-labelledby="astera-title">
+          <figure class="visual">
+            <div class="project-cover phone-pair cover-astera">
+              <img src="assets/astera-map.jpg" alt="東京23区の夜の3D地図に観測候補地を表示したAsteraのホーム画面" width="423" height="920">
+              <img src="assets/astera-detail.jpg" alt="観測地点から天体への方向と周囲の建物を示すAsteraの詳細画面" width="423" height="920">
+            </div>
+            <figcaption>Asteraのホーム画面と観測地点の詳細</figcaption>
+          </figure>
+          <div class="feature-copy">
+            <h3 id="astera-title" lang="en">Astera</h3>
+            <div class="description">
+              <p>東京23区で月や星を見られる場所を探すiPhoneアプリです。日時と天体を選ぶと、建物で天体が隠れるか、雲や街明かりはどうか、夜に入れる場所かを候補地ごとに確認できます。</p>
+              <p>渋谷駅前では、同じ時刻でも地上と展望台で月の見え方が違います。PLATEAUの3D都市モデルを使い、それぞれの目線の高さから建物と月の位置関係を確かめられるようにしました。</p>
+            </div>
+            <p class="context">SwiftUI・RealityKit・Project PLATEAU</p>
+            <details class="project-media">
+              <summary>デモ動画を見る <span class="media-length">1分58秒</span></summary>
+              <video width="1920" height="1080" controls playsinline preload="none" poster="assets/astera-demo-poster.jpg" aria-label="Asteraのデモ動画">
+                <source src="materials/astera-demo.mp4" type="video/mp4">
+                <a href="materials/astera-demo.mp4">Asteraのデモ動画を開く</a>
+              </video>
+            </details>
+            <div class="actions">
+              <a class="action primary" href="https://github.com/jphacks/tkb_2635">GitHubで作品を見る <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <article id="shift" class="shift" aria-labelledby="shift-title">
+        <h3 id="shift-title">矢上祭のシフト管理アプリ</h3>
+        <div>
+          <div class="description">
+            <p>矢上祭の実行委員が、スマホで自分の担当や集合場所、当日の予定を確かめるためのアプリです。運営側がGoogleスプレッドシートのシフト表を直すと、アプリの表示も更新されます。</p>
+          </div>
+          <p class="context">Next.js・Google Sheets API・PWA</p>
+        </div>
+      </article>
+    </section>
+
+    <section id="robotics" class="robotics" aria-labelledby="robotics-title">
+      <h2 id="robotics-title">ロボットの屋外自己位置推定</h2>
+      <div>
+        <div class="description">
+          <p>四足ロボットGo2Wで、GNSSの測位結果を手がかりに、LiDARの点群地図上で出発位置を特定する方法を試しました。走行ログを見ると、停止中は姿勢のずれが増えず、走った距離に応じてずれが大きくなりました。</p>
+        </div>
+        <p class="context">ROS 2・GNSS・LiDAR</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <a href="#top">ページ上部へ ↑</a>
+  </footer>
+  <script src="assets/gallery.js" defer></script>
+</body>
+</html>
