@@ -34,6 +34,7 @@
 
 * { box-sizing: border-box; }
 body, h1, h2, h3, p, figure { margin: 0; }
+body { overflow-x: clip; }
 img { display: block; max-width: 100%; }
 a { color: inherit; text-underline-offset: .22em; }
 button { font: inherit; }
@@ -69,11 +70,124 @@ nav a { color: var(--muted); font-size: .82rem; text-decoration: none; white-spa
 nav a:hover, .team-link:hover, .foot a:hover { color: var(--accent); text-decoration: underline; }
 
 .hero {
+  /* 東京RPG：街と冒険の地図を思わせる暖色 */
+  --hero-ink: #33211a;
+  --hero-muted: #5f4334;
+  --hero-accent: #9a4426;
+  --hero-accent-ink: #fffaf3;
+  --hero-base: #fbf4ea;
+  --hero-line: #dfc4a6;
+  --hero-control: #9b7458;
+  --hero-surface: #fffaf3d9;
+  --hero-ease: .7s cubic-bezier(.4,0,.2,1);
+  position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
   align-items: center;
   gap: clamp(20px, 4.5vw, 68px);
-  padding: 30px 0 clamp(32px, 4vw, 55px);
+  margin-bottom: clamp(34px, 4.5vw, 60px);
+  padding: clamp(36px, 4.6vw, 62px) 0 clamp(36px, 4.4vw, 58px);
+  color: var(--hero-ink);
+  transition: color var(--hero-ease);
+}
+.hero[data-active="astera"] {
+  /* Astera：夜空の紺から紫 */
+  --hero-ink: #f2f3ff;
+  --hero-muted: #c4c9e6;
+  --hero-accent: #c8bcff;
+  --hero-accent-ink: #1a1640;
+  --hero-base: #141a3d;
+  --hero-line: #ffffff2b;
+  --hero-control: #8e97c8;
+  --hero-surface: #ffffff12;
+}
+.hero :focus-visible { outline-color: var(--hero-accent); }
+.hero-backdrop {
+  position: absolute;
+  z-index: -1;
+  inset: 0 calc(50% - 50vw);
+  overflow: hidden;
+}
+.backdrop {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .8s ease;
+}
+.hero[data-active="tokyo"] .backdrop-tokyo,
+.hero[data-active="astera"] .backdrop-astera { opacity: 1; }
+.backdrop-tokyo {
+  background:
+    radial-gradient(ellipse 55% 85% at 80% 15%, #f6cf9e5c, transparent 70%),
+    radial-gradient(ellipse 45% 70% at 6% 105%, #e9bf963d, transparent 70%),
+    linear-gradient(165deg, #fbf4ea 0%, #f6e7d5 55%, #f1dcc4 100%);
+}
+.backdrop-tokyo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#8a5a3414 1px, transparent 1px),
+    linear-gradient(90deg, #8a5a3414 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 85% at 72% 45%, #000 15%, transparent 78%);
+  mask-image: radial-gradient(ellipse 60% 85% at 72% 45%, #000 15%, transparent 78%);
+}
+.backdrop-astera {
+  background:
+    radial-gradient(ellipse 50% 80% at 82% 8%, #5446a170, transparent 70%),
+    radial-gradient(ellipse 55% 70% at 8% 105%, #1f347599, transparent 70%),
+    linear-gradient(170deg, #0f1736 0%, #18194a 55%, #2a2156 100%);
+}
+.backdrop-astera::before,
+.backdrop-astera::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.backdrop-astera::before {
+  opacity: .5;
+  background:
+    radial-gradient(circle at 33.1% 16.9%, #fffc 0 0.9px, transparent 1.7px),
+    radial-gradient(circle at 9.0% 52.3%, #fffc 0 0.7px, transparent 1.5px),
+    radial-gradient(circle at 7.6% 49.7%, #fffc 0 0.6px, transparent 1.4px),
+    radial-gradient(circle at 43.6% 9.4%, #fffc 0 0.6px, transparent 1.4px),
+    radial-gradient(circle at 42.8% 79.1%, #fffc 0 0.6px, transparent 1.4px),
+    radial-gradient(circle at 23.4% 60.7%, #fffc 0 1.0px, transparent 1.8px),
+    radial-gradient(circle at 57.4% 39.5%, #fffc 0 1.0px, transparent 1.8px),
+    radial-gradient(circle at 6.5% 82.0%, #fffc 0 0.7px, transparent 1.5px),
+    radial-gradient(circle at 15.8% 13.8%, #fffc 0 0.7px, transparent 1.5px),
+    radial-gradient(circle at 80.3% 19.6%, #fffc 0 0.8px, transparent 1.6px),
+    radial-gradient(circle at 63.3% 37.3%, #fffc 0 0.8px, transparent 1.6px),
+    radial-gradient(circle at 8.0% 8.5%, #fffc 0 0.7px, transparent 1.5px),
+    radial-gradient(circle at 67.3% 42.3%, #fffc 0 0.7px, transparent 1.5px),
+    radial-gradient(circle at 58.2% 44.7%, #fffc 0 0.7px, transparent 1.5px),
+    radial-gradient(circle at 78.3% 67.3%, #fffc 0 0.7px, transparent 1.5px),
+    radial-gradient(circle at 57.1% 51.3%, #fffc 0 1.0px, transparent 1.8px),
+    radial-gradient(circle at 72.0% 29.5%, #fffc 0 1.0px, transparent 1.8px),
+    radial-gradient(circle at 13.3% 41.5%, #fffc 0 0.9px, transparent 1.7px),
+    radial-gradient(circle at 16.6% 48.0%, #fffc 0 0.6px, transparent 1.4px),
+    radial-gradient(circle at 66.1% 73.3%, #fffc 0 0.8px, transparent 1.6px),
+    radial-gradient(circle at 86.0% 31.9%, #fffc 0 0.9px, transparent 1.7px),
+    radial-gradient(circle at 59.1% 56.4%, #fffc 0 0.8px, transparent 1.6px),
+    radial-gradient(circle at 82.6% 89.9%, #fffc 0 0.8px, transparent 1.6px),
+    radial-gradient(circle at 65.8% 8.6%, #fffc 0 0.9px, transparent 1.7px),
+    radial-gradient(circle at 64.1% 94.4%, #fffc 0 0.9px, transparent 1.7px),
+    radial-gradient(circle at 29.3% 38.5%, #fffc 0 0.9px, transparent 1.7px);
+}
+.backdrop-astera::after {
+  opacity: .8;
+  background:
+    radial-gradient(circle at 4.2% 45.5%, #fff 0 1.1px, transparent 1.9px),
+    radial-gradient(circle at 13.2% 8.4%, #fff 0 1.4px, transparent 2.2px),
+    radial-gradient(circle at 14.4% 25.8%, #fff 0 1.2px, transparent 2.0px),
+    radial-gradient(circle at 85.7% 10.4%, #fff 0 1.2px, transparent 2.0px),
+    radial-gradient(circle at 54.7% 84.3%, #fff 0 1.4px, transparent 2.2px),
+    radial-gradient(circle at 84.9% 28.6%, #fff 0 1.2px, transparent 2.0px),
+    radial-gradient(circle at 36.4% 84.3%, #fff 0 1.5px, transparent 2.3px),
+    radial-gradient(circle at 16.5% 19.2%, #fff 0 1.1px, transparent 1.9px),
+    radial-gradient(circle at 24.4% 47.6%, #fff 0 1.3px, transparent 2.1px);
 }
 .hero-copy { position: relative; z-index: 1; }
 .hero h1 {
@@ -86,12 +200,54 @@ nav a:hover, .team-link:hover, .foot a:hover { color: var(--accent); text-decora
 .hero-summary {
   max-width: 26em;
   margin-top: 16px;
-  color: var(--muted);
+  color: var(--hero-muted);
   font-size: .95rem;
   line-height: 1.8;
   text-wrap: pretty;
+  transition: color var(--hero-ease);
 }
 .hero-summary span { display: block; }
+.hero-feature {
+  display: grid;
+  max-width: 28em;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hero-line);
+  transition: border-color var(--hero-ease);
+}
+.feature-note {
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity .4s ease, transform .55s cubic-bezier(.22,.8,.25,1), visibility 0s linear .4s;
+}
+.hero[data-active="tokyo"] .feature-note[data-scene="tokyo"],
+.hero[data-active="astera"] .feature-note[data-scene="astera"] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: .15s, .15s, 0s;
+}
+.note-title { font: 700 1.22rem/1.3 var(--display); letter-spacing: -.03em; }
+.note-title a { text-decoration: none; }
+.note-title a:hover { text-decoration: underline; text-decoration-color: var(--hero-accent); }
+.note-award {
+  margin-top: 3px;
+  color: var(--hero-accent);
+  font-size: .8rem;
+  font-weight: 650;
+  line-height: 1.55;
+  transition: color var(--hero-ease);
+}
+.note-text {
+  margin-top: 6px;
+  color: var(--hero-muted);
+  font-size: .86rem;
+  line-height: 1.75;
+  text-wrap: pretty;
+  transition: color var(--hero-ease);
+}
 .hero-link {
   display: inline-flex;
   align-items: center;
@@ -99,23 +255,23 @@ nav a:hover, .team-link:hover, .foot a:hover { color: var(--accent); text-decora
   margin-top: 22px;
   padding: 8px 14px;
   min-height: 43px;
-  border: 1px solid var(--control-border);
+  border: 1px solid var(--hero-control);
   border-radius: 30px;
   font-size: .8rem;
   font-weight: 650;
   text-decoration: none;
-  transition: background-color .2s, color .2s, border-color .2s;
+  transition: background-color .2s, color .2s, border-color var(--hero-ease);
 }
-.hero-link:hover { background: var(--ink); color: var(--background); border-color: var(--ink); }
+.hero-link:hover { background: var(--hero-ink); color: var(--hero-base); border-color: var(--hero-ink); }
 .hero-showcase { min-width: 0; }
 .hero-stage {
   position: relative;
   aspect-ratio: 1.78;
   isolation: isolate;
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 1px solid var(--hero-line);
   border-radius: 26px;
-  background: var(--selected);
+  transition: border-color var(--hero-ease);
 }
 .stage-scene {
   position: absolute;
@@ -123,22 +279,22 @@ nav a:hover, .team-link:hover, .foot a:hover { color: var(--accent); text-decora
   overflow: hidden;
   opacity: 0;
   transform: translateY(13px) scale(1.025);
-  transition: opacity .5s ease, transform .62s cubic-bezier(.22,.8,.25,1);
+  transition: opacity .6s ease, transform .7s cubic-bezier(.22,.8,.25,1);
 }
-.hero-stage[data-active="tokyo"] [data-scene="tokyo"],
-.hero-stage[data-active="astera"] [data-scene="astera"] {
+.hero[data-active="tokyo"] .stage-scene[data-scene="tokyo"],
+.hero[data-active="astera"] .stage-scene[data-scene="astera"] {
   opacity: 1;
   transform: none;
 }
 .stage-tokyo {
   background:
-    radial-gradient(ellipse at 67% 24%, #f3fbfc 0, transparent 56%),
-    radial-gradient(ellipse at 31% 83%, #abd2df, #d8eaf1 72%);
+    radial-gradient(ellipse at 67% 24%, #fffaf2 0, transparent 56%),
+    radial-gradient(ellipse at 31% 83%, #ebc9a3, #f7e8d6 72%);
 }
 .stage-astera {
   background:
-    radial-gradient(ellipse at 76% 20%, #f4f6ff 0, transparent 58%),
-    radial-gradient(ellipse at 29% 79%, #bac9e2, #dde6f3 72%);
+    radial-gradient(ellipse at 76% 18%, #6253b066 0, transparent 58%),
+    radial-gradient(ellipse at 29% 79%, #22306b, #11173a 72%);
 }
 .stage-scene::before {
   content: "";
@@ -147,13 +303,18 @@ nav a:hover, .team-link:hover, .foot a:hover { color: var(--accent); text-decora
   border: 1px solid #fff9;
   border-radius: 14px;
 }
+.stage-astera::before { border-color: #ffffff24; }
 .stage-phone {
   position: absolute;
   width: auto;
   height: 72%;
-  border: 1px solid #385a7959;
+  border: 1px solid #5a3a2259;
   border-radius: clamp(11px, 1.56vw, 22px);
-  box-shadow: 0 18px 37px #1c456540;
+  box-shadow: 0 18px 37px #5a32144a;
+}
+.stage-astera .stage-phone {
+  border-color: #ffffff33;
+  box-shadow: 0 20px 42px #02041285;
 }
 .stage-phone-left {
   left: 24%;
@@ -169,11 +330,12 @@ nav a:hover, .team-link:hover, .foot a:hover { color: var(--accent); text-decora
   display: flex;
   justify-content: center;
   width: fit-content;
-  margin: 10px auto 0;
+  margin: 12px auto 0;
   padding: 2px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--hero-line);
   border-radius: 30px;
-  background: var(--surface);
+  background: var(--hero-surface);
+  transition: background-color var(--hero-ease), border-color var(--hero-ease);
 }
 .project-switch button {
   min-height: 44px;
@@ -181,13 +343,14 @@ nav a:hover, .team-link:hover, .foot a:hover { color: var(--accent); text-decora
   border: 0;
   border-radius: 30px;
   background: transparent;
-  color: var(--muted);
+  color: var(--hero-muted);
   font-size: .78rem;
   font-weight: 650;
   cursor: pointer;
+  transition: color .35s ease, background-color .35s ease;
 }
-.project-switch button:hover { color: var(--ink); }
-.project-switch button[aria-pressed="true"] { color: var(--surface); background: var(--accent); }
+.project-switch button:hover { color: var(--hero-ink); }
+.project-switch button[aria-pressed="true"] { color: var(--hero-accent-ink); background: var(--hero-accent); }
 
 .section-heading {
   display: flex;
@@ -360,8 +523,16 @@ nav a:hover, .team-link:hover, .foot a:hover { color: var(--accent); text-decora
     }
   }
 }
+@media (prefers-reduced-motion: no-preference) {
+  .backdrop-astera::after { animation: twinkle 4.8s ease-in-out infinite alternate; }
+}
 @media (prefers-reduced-motion: reduce) {
-  .stage-scene, .hero-link, .action { transition: none; }
+  .hero, .hero *, .hero *::before, .hero *::after, .action { transition: none !important; }
+  .stage-scene, .feature-note { transform: none !important; }
+}
+@keyframes twinkle {
+  from { opacity: .35; }
+  to { opacity: .9; }
 }
 @keyframes arrive {
   from { opacity: .18; transform: translateY(16px); }
@@ -384,7 +555,8 @@ nav a:hover, .team-link:hover, .foot a:hover { color: var(--accent); text-decora
 @media (max-width: 720px) {
   .wrap { width: calc(100% - 34px); }
   .masthead-inner { min-height: 54px; }
-  .hero { grid-template-columns: minmax(0, 1fr); gap: 22px; padding-top: 35px; }
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 22px; padding: 32px 0 30px; }
+  .hero-feature { margin-top: 16px; padding-top: 13px; }
   .hero-summary { margin-top: 10px; }
   .hero-link { margin-top: 13px; }
   .hero-stage { border-radius: 17px; }

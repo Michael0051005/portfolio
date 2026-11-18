@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="description" content="東京RPG、Astera、矢上祭シフト管理アプリ、屋外自己位置推定の実機検証を紹介します。">
   <title>Portfolio</title>
-  <link rel="stylesheet" href="assets/site.css?v=20261118-palette">
+  <link rel="stylesheet" href="assets/site.css?v=20261118-hero-theme">
 </head>
 <body id="top">
   <a class="skip" href="#main">本文へ移動</a>
@@ -22,14 +22,30 @@
   </header>
 
   <main id="main" class="wrap">
-    <section class="hero" aria-labelledby="intro-title">
+    <section class="hero" data-active="tokyo" aria-labelledby="intro-title">
+      <div class="hero-backdrop" aria-hidden="true">
+        <div class="backdrop backdrop-tokyo" data-scene="tokyo"></div>
+        <div class="backdrop backdrop-astera" data-scene="astera"></div>
+      </div>
       <div class="hero-copy">
         <h1 id="intro-title" lang="en">Portfolio</h1>
         <p class="hero-summary"><span>東京RPGとAsteraを中心に、</span>アプリ制作とロボットの実機検証をまとめました。</p>
+        <div class="hero-feature" aria-live="polite">
+          <div class="feature-note" data-scene="tokyo">
+            <p class="note-title"><a href="#tokyo-rpg">東京RPG</a></p>
+            <p class="note-award">都知事杯オープンデータ・ハッカソン2026 ファイナリスト</p>
+            <p class="note-text">東京都のオープンデータで混み具合を推定し、空いている場所を訪ねるほど経験値が増える、外国人旅行者向けの観光アプリです。</p>
+          </div>
+          <div class="feature-note" data-scene="astera" aria-hidden="true">
+            <p class="note-title" lang="en"><a href="#astera">Astera</a></p>
+            <p class="note-award"><span lang="en">JPHACKS 2026 Hack Day Audience Award</span> 受賞</p>
+            <p class="note-text">PLATEAUの3D都市モデルで建物による遮りを確かめ、東京23区で月や星が見える場所を探すiPhoneアプリです。</p>
+          </div>
+        </div>
         <a class="hero-link" href="#works">作品を見る <span aria-hidden="true">↓</span></a>
       </div>
       <div class="hero-showcase">
-        <div id="hero-stage" class="hero-stage" data-active="tokyo" aria-hidden="true">
+        <div id="hero-stage" class="hero-stage" aria-hidden="true">
           <div class="stage-scene stage-tokyo" data-scene="tokyo">
             <img class="stage-phone stage-phone-left" src="assets/tokyo-card.jpg" alt="" width="392" height="850">
             <img class="stage-phone stage-phone-right" src="assets/tokyo-map.jpg" alt="" width="392" height="850" fetchpriority="high">
@@ -53,13 +69,12 @@
           <div>
             <h3 class="recognition-project"><a href="#tokyo-rpg">東京RPG</a></h3>
             <p class="recognition-result">ファイナリスト</p>
-            <p class="recognition-event">都知事杯オープンデータ・ハッカソン2026</p>
+            <p class="recognition-event"><a href="https://odhackathon.metro.tokyo.lg.jp/">都知事杯オープンデータ・ハッカソン2026 <span aria-hidden="true">↗</span></a></p>
             <p class="recognition-detail">応募<strong>486件</strong>のうち<strong>24件</strong>が進出<span class="recognition-team">（KEIO SCI-TECH）</span></p>
           </div>
-          <a class="recognition-source" href="https://www.metro.tokyo.lg.jp/information/press/2026/10/2026102010">
+          <div class="recognition-source">
             <img src="assets/tokyo-final-stage.jpg" alt="Final Stageの集合写真" width="600" height="237">
-            <span>東京都の報道発表 <span aria-hidden="true">↗</span></span>
-          </a>
+          </div>
         </article>
         <article class="recognition">
           <h3 class="recognition-project" lang="en"><a href="#astera">Astera</a></h3>
@@ -163,6 +178,6 @@
   <footer class="wrap foot">
     <a href="#top">ページ上部へ ↑</a>
   </footer>
-  <script src="assets/gallery.js" defer></script>
+  <script src="assets/gallery.js?v=20261118-hero-theme" defer></script>
 </body>
 </html>
